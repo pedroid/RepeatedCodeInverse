@@ -1,4 +1,6 @@
 # RepeatedCodeInverse
+written by Yu-Sheng Chen
+
 Convert a paragragh of codes or words with regular rules into a function with for loop and statements.
 找到數行程式碼中數字遞迴的規則，產生"以迴圈產生該原始碼的程式"
 
