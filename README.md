@@ -60,4 +60,52 @@ print 'end'
   end
 ```
 
-可以看到我們將通道擴充了(64->128)，此外為了每個pin都能獨立測試，在每個pin上都各別加上了一個開關。這個動作在某些工作中滿常見的。
+可以看到我們將通道擴充了(64->128)，此外為了每個pin都能獨立測試，在每個pin上都各別加上了一個開關。這個動作在某些工作中滿常見的。一般而言，若是沒有原始產生該段程式碼的開發程式，我們還是可以從頭去撰寫，這估計也花不了多少時間，然而，重新寫作這件事情本身也是一個重覆的動作不是嗎？當然要有法子來幫助懶惰的程式設計師減輕我們的負擔啦。RepeatedCodeInverse就是基於這個目的下去開發的！
+
+使用上，分成幾個步驟：
+1、將想要改寫的程式碼獨立擷取出來到一文字檔
+2、執行RepeatedCodeInverse工具，將步驟一的文字檔作為程式的輸入，
+3、程式判斷出該段程式的遞迴規律，並輸出以特定語法(預設為python)的程式碼
+4、使用者去修改該程式碼，改變自己想要的變數，在本文件所列舉中的例子為通道數，以及加入遮罩
+5、輸出程式碼，並貼回自己的程式。
+
+example1:(written in python)
+```
+from fn_inverse_verilog import ContinuousNumList2Rule, RepeatedCodeInverse
+#read in file
+filename = 'example1.txt'
+f = open(filename, 'r')
+AllLine = f.readlines()
+RepeatedCodeInverse(AllLine)
+```
+程式的輸出：
+```
+for i in range(64):
+	print 'reg [' + str( 1+i*(0)) + ':' + str( 0+i*(0)) + '] pin' + str( 0+i*(1)) + ''
+```
+若要將程式修改為128 的版本，就只要修改對應的參數即可：
+```
+for i in range(128):
+	print 'reg [' + str( 1+i*(0)) + ':' + str( 0+i*(0)) + '] pin' + str( 0+i*(1)) + ''
+```
+
+example2:(written in python)
+```
+from fn_inverse_verilog import ContinuousNumList2Rule, RepeatedCodeInverse
+#read in file
+filename = 'example2.txt'
+f = open(filename, 'r')
+AllLine = f.readlines()
+RepeatedCodeInverse(AllLine)
+```
+程式的輸出：
+```
+for i in range(64):
+	print '	pin' + str( 0+i*(1)) + '<= ' + str( 2+i*(0)) + ''d' + str( 0+i*(0)) + ''
+```
+若要將程式修改為128 的版本，就只要修改對應的參數即可：
+```
+for i in range(128):
+	print '	pin' + str( 0+i*(1)) + '<= enable[' + str(i) + ']?' + str( 2+i*(0)) + ''d' + str( 0+i*(0)) + ':0;'
+```
+
