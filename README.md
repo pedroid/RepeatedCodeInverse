@@ -4,6 +4,8 @@ written by ntuyusheng@gmail.com
 Convert a paragragh of codes or words with regular rules into a function with for loop and statements.
 找到數行程式碼中數字遞迴的規則，產生"以迴圈產生該原始碼的程式"
 
+[程式範例(用javascript實現的版本)](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)
+
 當使用硬體描述語言開發數位電路時，因為電路的特色就是許多I/O 控制是平行在運行的. 因此常常會需要大量的宣告變數，以及指定值給這些變數。舉例來說，工作上我們若需要宣告64通道的I/O，並將這些通道訊號指定給特定的前級訊號。在原始碼上常常會看到這樣格式的內容：
 
 ```
