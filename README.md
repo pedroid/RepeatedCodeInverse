@@ -5,8 +5,9 @@ Convert a paragragh of codes or words with regular rules into a function with fo
 找到數行程式碼中數字遞迴的規則，產生"以迴圈產生該原始碼的程式"
 
 [程式範例(用javascript實現的版本)](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)
+[Examples (using javascript)](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)
 
-當使用硬體描述語言開發數位電路時，因為電路的特色就是許多I/O 控制是平行在運行的. 因此常常會需要大量的宣告變數，以及指定值給這些變數。舉例來說，工作上我們若需要宣告64通道的I/O，並將這些通道訊號指定給特定的前級訊號。在原始碼上常常會看到這樣格式的內容：
+在設計電路以及韌體的時候，常常會使用硬體描述語言(HDL)開發，因為電路的特色就是許多I/O 控制是平行在運行的.而HDL的特色就是將電路中的元素如線(wire)、暫存器(registers)等用"變數"來表示， 因此常常會需要大量的宣告變數，以及指定值給這些變數。舉例來說，工作上我們若需要宣告64通道的I/O，並將這些通道訊號指定給特定的前級訊號。在原始碼上常常會看到這樣格式的內容：(這裡我們用Verilog硬體描述語言來說明)
 
 ```
   #written in Verilog
@@ -19,7 +20,7 @@ Convert a paragragh of codes or words with regular rules into a function with fo
   
   #pin assignment
   always@(*)begin
-    pin0 <= 2'd0;
+    pin0 <= 2'd0; #2 bits zero
     pin1 <= 2'd0;
     pin2 <= 2'd0;
     //...
@@ -113,3 +114,5 @@ for i in range(128):
 	print '	pin' + str( 0+i*(1)) + '<= enable[' + str(i) + ']?' + str( 2+i*(0)) + ''d' + str( 0+i*(0)) + ':0;'
 ```
 
+(全篇完)
+註：考慮到使用上的方便，所以用javascript也寫了一個[網頁版](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)，再加上HTML、CSS在UI上作設計，使得若是想要用這個工具，將javascript/這個資料夾copy到個人電腦即可使用，不需上網，也不需安裝額外程式，只要有瀏覽器即可。
