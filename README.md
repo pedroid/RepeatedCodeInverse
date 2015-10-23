@@ -5,6 +5,7 @@ Convert a paragragh of codes or words with regular rules into a function with fo
 找到數行程式碼中數字遞迴的規則，產生"以迴圈產生該原始碼的程式"
 
 [程式範例(用javascript實現的版本)](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)
+
 [Examples (using javascript)](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)
 
 在設計電路以及韌體的時候，常常會使用硬體描述語言(HDL)開發，因為電路的特色就是許多I/O 控制是平行在運行的.而HDL的特色就是將電路中的元素如線(wire)、暫存器(registers)等用"變數"來表示， 因此常常會需要大量的宣告變數，以及指定值給這些變數。舉例來說，工作上我們若需要宣告64通道的I/O，並將這些通道訊號指定給特定的前級訊號。在原始碼上常常會看到這樣格式的內容：(這裡我們用Verilog硬體描述語言來說明)
