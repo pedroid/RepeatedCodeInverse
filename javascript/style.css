@@ -1,0 +1,100 @@
+.circle_button{    
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+    width: 70px;
+    height: 70px;
+    border: 10px solid green;    
+    line-height:70px;
+    text-align:center;
+    
+}
+
+#src{
+    background:white;
+    border:1 px;
+    position:absolute;
+    top:10%;
+    left:1%;
+    width:25%;
+    height:50%;
+}
+
+#auto_generated_script{    
+    background:white;
+    border:1 px;
+    position:absolute;
+    top:10%;
+    left:32%;
+    width:25%;
+    height:50%;
+}
+
+#re_generated_src{
+    background:white;
+    border:1 px;
+    position:absolute;
+    top:10%;
+    left:63%;
+    width:25%;
+    height:50%;
+}
+
+#script_submit{
+    background:white;       
+    position:absolute;     
+    left:27%;
+    top:30%;
+    
+}
+#console_msg_div{
+    position:absolute;
+    top:65%;
+    border:1px red solid;
+    width:90%;
+    left:10px;
+}
+
+
+#bt_regenerate{
+    background:white;
+    position:absolute;
+    left:58%;
+    top:30%;    
+}
+
+#step1{
+    width:400px;
+    background:none;
+    position:absolute;
+    left:1%;
+    top:2%;
+}
+
+#step2{
+    width:400px;
+    background:none;
+    position:absolute;
+    left:31%;
+    top:2%;
+}
+
+#step3{
+    width:400px;
+    background:none;
+    position:absolute;
+    left:61%;
+    top:2%;
+}
+
+#user_inf{
+    position:absolute;
+    top: 35%;
+    width: 80%;
+    display:none;
+}
+
+#visitor_counter{
+    position:absolute;
+    top:550px;   
+    display:none;
+}

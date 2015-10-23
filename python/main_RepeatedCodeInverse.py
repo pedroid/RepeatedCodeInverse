@@ -12,7 +12,7 @@ from RepeatedCodeInverse import ContinuousNumList2Rule, RepeatedCodeInverse
 #filename = 'output_verilog_pulser_assign.txt' OK
 #filename = 'output_verilog_pulser_assign_mask.txt' #OK
 #filename = 'output_verilog.txt'
-filename = 'example2.txt'
+filename = 'example.txt'
 f = open(filename, 'r')
 AllLine = f.readlines()
 RepeatedCodeInverse(AllLine)
