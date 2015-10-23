@@ -2,6 +2,7 @@
 written by ntuyusheng@gmail.com
 
 Convert a paragragh of codes or words with regular rules into a function with for loop and statements.
+
 找到數行程式碼中數字遞迴的規則，產生"以迴圈產生該原始碼的程式"
 
 [程式範例(用javascript實現的版本)](http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html)
