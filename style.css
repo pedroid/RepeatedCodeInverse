@@ -88,9 +88,9 @@
 
 #user_inf{
     position:absolute;
-    top: 35%;
+    top: 75%;
     width: 80%;
-    display:none;
+    //display:none;
 }
 
 #visitor_counter{
