@@ -1,47 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Repeatedcodeinverse : Convert a paragragh of codes or words with regular rules into a function with for loop and statements.將有重覆規則的原始碼(或文字)轉換成一個迴圈+敘述句的格式">
+    <title>Repeatedcodeinverse by pedroid</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Repeatedcodeinverse</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Repeatedcodeinverse</h1>
+        <p>Convert a paragragh of codes or words with regular rules into a function with for loop and statements.將有重覆規則的原始碼(或文字)轉換成一個迴圈+敘述句的格式</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/pedroid/RepeatedCodeInverse">View on GitHub</a>
+        <p class="view"><a href="https://github.com/pedroid/RepeatedCodeInverse">View the Project on GitHub <small>pedroid/RepeatedCodeInverse</small></a></p>
 
-          <h1 id="project_title">Repeatedcodeinverse</h1>
-          <h2 id="project_tagline">Convert a paragragh of codes or words with regular rules into a function with for loop and statements.將有重覆規則的原始碼(或文字)轉換成一個迴圈+敘述句的格式</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/pedroid/RepeatedCodeInverse/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/pedroid/RepeatedCodeInverse/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+        <ul>
+          <li><a href="https://github.com/pedroid/RepeatedCodeInverse/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/pedroid/RepeatedCodeInverse/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/pedroid/RepeatedCodeInverse">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h1>
 <a id="repeatedcodeinverse" class="anchor" href="#repeatedcodeinverse" aria-hidden="true"><span class="octicon octicon-link"></span></a>RepeatedCodeInverse</h1>
 
-<p>Contact: <a href="mailto:ntuyusheng@gmail.com">ntuyusheng@gmail.com</a></p>
+<p>written by <a href="mailto:ntuyusheng@gmail.com">ntuyusheng@gmail.com</a></p>
 
 <p>Convert a paragragh of codes or words with regular rules into a function with for loop and statements.
 找到數行程式碼中數字遞迴的規則，產生"以迴圈產生該原始碼的程式"</p>
-
-<p>
-<a target="_blank" href="http://pedroid.github.io/RepeatedCodeInverse/RepeatedCodeGenerator.html">程式範例example code</a>
-</p>
 
 <p>當使用硬體描述語言開發數位電路時，因為電路的特色就是許多I/O 控制是平行在運行的. 因此常常會需要大量的宣告變數，以及指定值給這些變數。舉例來說，工作上我們若需要宣告64通道的I/O，並將這些通道訊號指定給特定的前級訊號。在原始碼上常常會看到這樣格式的內容：</p>
 
@@ -151,18 +144,27 @@ RepeatedCodeInverse(AllLine)
 <pre><code>for i in range(128):
     print ' pin' + str( 0+i*(1)) + '&lt;= enable[' + str(i) + ']?' + str( 2+i*(0)) + ''d' + str( 0+i*(0)) + ':0;'
 </code></pre>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Repeatedcodeinverse maintained by <a href="https://github.com/pedroid">pedroid</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+<p>(全篇完) </p>
+
+<p>註：考慮到使用上的方便，所以用javascript也寫了一個網頁版，再加上HTML、CSS在UI上作設計，使得若是想要用這個工具，將javascript/這個資料夾copy到個人電腦即可使用，不需上網，也不需安裝額外程式，只要有瀏覽器即可。</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/pedroid">pedroid</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
-    
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-19143938-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
   </body>
 </html>
