@@ -16,11 +16,11 @@ function element(index, type, data, rule){
     this.data = data;//if(type==continuous) data=[a,b]; if(type== random) data = [a, b, c, ..., size_element-1]
     this.rule = rule;// for 'num' type: 'continuous', 'random'; for 'str' type: 'constant', 'random'
     this.next = index+1;//int
-    this.index = index;    
+    this.index = index;
 }
 
 function src_change_handler(){
-    $('#script_submit').css('border','10px solid red');    
+    $('#script_submit').css('border','10px solid red');
 }
 
 function script_change_handler(){
@@ -33,7 +33,7 @@ function analyze(){
         //$("#auto_generated_script").html('');
         script_text = $('#src').val();
         script_lines = script_text.split(/\n+/);
-        //ÀË¬d³Ì«á¤@¦æ¬O§_¬Omultiple spaces¡A¦pªG¬Oªº¸Ü¡Apop()
+        //ï¿½Ë¬dï¿½Ì«ï¿½ï¿½@ï¿½ï¿½ï¿½Oï¿½_ï¿½Omultiple spacesï¿½Aï¿½pï¿½Gï¿½Oï¿½ï¿½ï¿½Ü¡Apop()
         re_multiple_spaces = new RegExp('\\s+');
         re_alphanumeric_character = new RegExp('\\w');
         if(!re_alphanumeric_character.test(script_lines[script_lines.length-1])){
@@ -45,90 +45,90 @@ function analyze(){
             }
         }
         //
-        
-        //ÀË¬d¡G¥²¶·­n¤j©óµ¥©ó¤T¦æ¡A¤~·|Ä~Äò³B²z
+
+        //ï¿½Ë¬dï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½nï¿½jï¿½óµ¥©ï¿½ï¿½Tï¿½ï¿½ï¿½Aï¿½~ï¿½|ï¿½~ï¿½ï¿½ï¿½Bï¿½z
         if(script_lines.length<3){
             console.log('number of lines should be above 2.')
             return;
         }
         //
-        
-        
 
-        
+
+
+
         var index_line = 0;
         theNumGrp = [];
         theStrGrp_ = [];
-        for(index_line;index_line < script_lines.length; index_line++){            
-            //truncate beginning space, and return finally            
-            var re_begin_with_zero_or_more_spaces = new RegExp('^\\s*');                        
-            var result_split_space_begin = script_lines[index_line].split(re_begin_with_zero_or_more_spaces);            
+        for(index_line;index_line < script_lines.length; index_line++){
+            //truncate beginning space, and return finally
+            var re_begin_with_zero_or_more_spaces = new RegExp('^\\s*');
+            var result_split_space_begin = script_lines[index_line].split(re_begin_with_zero_or_more_spaces);
             if(result_split_space_begin.length == 1) { the_script_line = result_split_space_begin[0]; }
-            else { the_script_line = result_split_space_begin[1]; }            
-            //console.log(the_script_line);            
+            else { the_script_line = result_split_space_begin[1]; }
+            //console.log(the_script_line);
             //
-            //check if number begin the line    
+            //check if number begin the line
             var NumberBegin;
             var re_NumberBegin = new RegExp('^[0-9]')
             if(re_NumberBegin.test(the_script_line)){NumberBegin = 1;}
             else{NumberBegin = 0;}
             //console.log('NumberBegin:'+NumberBegin);
             //
-            //append theNumGrp            
+            //append theNumGrp
             //console.log(index_line);
-            theNumGrp[index_line] = the_script_line.match(/[0-9]+/g);                        
+            theNumGrp[index_line] = the_script_line.match(/[0-9]+/g);
             //
-            
-            //split with 'number'    
+
+            //split with 'number'
             theStrGrp_[index_line] = script_lines[index_line].split(/[0-9]+/);
         }
-        
-        //±N²Ä¤@¦æ¸É¹s (from undefined)
+
+        //ï¿½Nï¿½Ä¤@ï¿½ï¿½ï¿½É¹s (from undefined)
         var zero_vector = [];
         for(var i=0;i<theNumGrp[1].length;i++){
             zero_vector[i] = '0';
         }
-        //theNumGrp[0] = zero_vector;        
-        //        
-        //°£¤F²Ä¤@¦æ¡A±q²Ä¤G¦æ¶}©l³B²z
+        //theNumGrp[0] = zero_vector;
+        //
+        //ï¿½ï¿½ï¿½Fï¿½Ä¤@ï¿½ï¿½ï¿½Aï¿½qï¿½Ä¤Gï¿½ï¿½ï¿½}ï¿½lï¿½Bï¿½z
         theStrGrp = theStrGrp_[1];
-        
-        //ÀË¬dtheStrGrp¤¤¬O§_¦³¸õ²æ¦r¤¸
+
+        //ï¿½Ë¬dtheStrGrpï¿½ï¿½ï¿½Oï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½rï¿½ï¿½
         for(var i =0; i<theStrGrp.length; i++){
-            // ±N" ¸m´«¬° \"
-            theStrGrp[i] = theStrGrp[i].replace("\"","\\\"");
+            // ï¿½N" ï¿½mï¿½ï¿½ï¿½ï¿½ \"
+            theStrGrp[i] = theStrGrp[i].replace(/"/g,"\\\"");
         }
-        //        
+        //
     /*
-    notes:    
+    notes:
     1. i-th row : theNumGrp[i]
     2. j-th col : transpose(theNumGrp)[j]
      3. convert from str list to int: theNumGrp[j].map(function(x){return parseInt(x,10);})
-       (the str input must be "1-D list"!)        
+       (the str input must be "1-D list"!)
     */
-    
+
     NumVar = theNumGrp[0].length;
     //get rules of each varibles
-    RulesOfVar_data = [];// [0]: ²Ä¤@­ÓÅÜ¼Æªº³W«h; [1]¡G²Ä¤G­ÓÅÜ¼Æªº³W«h
+    RulesOfVar_data = [];// [0]: ï¿½Ä¤@ï¿½ï¿½ï¿½Ü¼Æªï¿½ï¿½Wï¿½h; [1]ï¿½Gï¿½Ä¤Gï¿½ï¿½ï¿½Ü¼Æªï¿½ï¿½Wï¿½h
     theNumGrp_wo_line1 = theNumGrp.slice(1,theNumGrp.length);
     VarContinuous = 1;
     var NumElement = [];
-    for(var i=0;i<NumVar; i++){        
+    for(var i=0;i<NumVar; i++){
         NumElement[i] = NumList2Rule(transpose(theNumGrp/*_wo_line1*/)[i].map(function(x){return parseInt(x,10)}));
         //console.log(NumElement[i].data);
         //console.log(NumElement[i].rule);
-        RulesOfVar_data[i] = NumElement[i].data;                        
+        RulesOfVar_data[i] = NumElement[i].data;
     }
 
     //
     script ='gen_script = []\n\n';
     var int_RulesOfVar_data = [];
-    for(var i=0;i<NumVar; i++){                
+    for(var i=0;i<NumVar; i++){
         int_RulesOfVar_data[i] = RulesOfVar_data[i].map(function(x){return parseInt(x,10)});
     }
-    script += 'NumElement = [];//number list declaration\n';  
-    for(var index=0;index<NumVar; index++){//­Y¦³¼Æ¦r¸ê®Æ¬°random¡A«Å§i¨äÅÜ¼Æ§Ç¦C
-        if(NumElement[index].rule == 'random'){                     
+    script += 'NumElement = [];//number list declaration\n';
+    for(var index=0;index<NumVar; index++){//ï¿½Yï¿½ï¿½ï¿½Æ¦rï¿½ï¿½ï¿½Æ¬ï¿½randomï¿½Aï¿½Å§iï¿½ï¿½ï¿½Ü¼Æ§Ç¦C
+        if(NumElement[index].rule == 'random'){
             script += 'NumElement[' + index.toString() +'] = [';
             for(var ivar = 0; ivar < NumElement[index].data.length; ivar++){
                 script += NumElement[index].data[ivar].toString();
@@ -137,52 +137,52 @@ function analyze(){
                 }
             }
             script += '];\n';
-        }else{            
+        }else{
             script += '//the #' + index.toString() + ' variable is continuous.\n';
         }
     }
-    
+
     var int_theNumGrp_1 = [];
     int_theNumGrp_1 = theNumGrp[1].map(function(x){return parseInt(x,10)});
 
-    
-    
-    //    
+
+
+    //
     //generate javascript
     if(NumberBegin){ //sequence: theNumGrp -> theStrGrp
-        
-    }else{//sequence: theStrGrp -> theNumGrp            
+
+    }else{//sequence: theStrGrp -> theNumGrp
         script += '\nfor(var i=0;i<' + (script_lines.length).toString() + ';i++){\n\n';
         //script += "\tconsole.log(";
         script += 'gen_script+=\n';
         for(var index_BothGrp=0; index_BothGrp<NumVar+theStrGrp.length; index_BothGrp++){
             //distinguish the group of number group
             if(index_BothGrp%2==0){ //theStrGrp
-                indexOfSpecificGrp = index_BothGrp/2; 
-                
+                indexOfSpecificGrp = index_BothGrp/2;
+
                 if(index_BothGrp == theStrGrp.length + NumVar - 1){ //EOF handling
                     script += "\t\""
                     script += theStrGrp[indexOfSpecificGrp];
-                    script += "\";"                
+                    script += "\";"
                     script += "\n"
                 }
                 else{
                     script += "\t\""
                     script += theStrGrp[indexOfSpecificGrp];
-                    script += "\" + \n"                
+                    script += "\" + \n"
                 }
-            }else{//theNumGrp                   
-                indexOfSpecificGrp = (index_BothGrp-1)/2;                
+            }else{//theNumGrp
+                indexOfSpecificGrp = (index_BothGrp-1)/2;
                 if(NumElement[indexOfSpecificGrp].rule == 'continuous'){
-                    //console.log(indexOfSpecificGrp);                    
+                    //console.log(indexOfSpecificGrp);
                     //console.log(NumElement[indexOfSpecificGrp].data);
                     if(index_BothGrp == theStrGrp.length + NumVar - 1){ //EOF handling
                         script += "\t( " + NumElement[indexOfSpecificGrp].data[0].toString() + "+i*("+NumElement[indexOfSpecificGrp].data[1].toString()  + ")).toSring() \n"
                     }else{
                         script += "\t( " + NumElement[indexOfSpecificGrp].data[0].toString() + "+i*("+NumElement[indexOfSpecificGrp].data[1].toString()  + ")).toString() + \n"
-                    }    
+                    }
                 }else if (NumElement[indexOfSpecificGrp].rule == 'random'){
-                    
+
                     if(index_BothGrp == theStrGrp.length + NumVar - 1){ //EOF handling
                         //script +=  "\t NumElement[" + indexOfSpecificGrp.toString() +"][i].toString()\n"
                     }else{
@@ -206,8 +206,8 @@ function analyze(){
         regenerate_script = eval(script);
         //$("#re_generated_src").html(regenerate_script);
 
-    
-    
+
+
     $('#script_submit').css('border','10px solid green');
     $('#bt_regenerate').css('border','10px solid red');
 }
@@ -216,23 +216,23 @@ function analyze(){
 
 //transpose
 /*example
-    transpose([[1,2,3]]); //1-D array 
+    transpose([[1,2,3]]); //1-D array
     transpose([[1,2,3],[4,5,6]]); //2-D array
 */
 function regenerate_code(){
     $('#console_msg').html('');
     try{
         refined_script_text = eval($('#auto_generated_script').val());
-    }catch(err){        
+    }catch(err){
         $('#console_msg').html(err);
     }
-       
+
     //var regenerate_script = eval(script);
     $("#re_generated_src").val(refined_script_text);
     $('#bt_regenerate').css('border','10px solid green');
 }
 
-function transpose(matrix) {  
+function transpose(matrix) {
     //console.log('example1:transpose([[1,2,3])\nexample2:transpose([[1,2,3],[4,5,6]])');
     return zeroFill(getMatrixWidth(matrix)).map(function(r, i) {
         return zeroFill(matrix.length).map(function(c, j) {
@@ -245,7 +245,7 @@ function getMatrixWidth(matrix) {
         return Math.max(result, row.length);
     }, 0);
 }
-function zeroFill(n) {    
+function zeroFill(n) {
     return new Array(n+1).join('0').split('').map(Number);
 }
 //end of transpose
@@ -254,9 +254,9 @@ function zeroFill(n) {
 function NumList2Rule(NumList){
     /*
     #example:
-    #input : [1,2,3] 
+    #input : [1,2,3]
     #output: [1, 1]
-    #function: increment    
+    #function: increment
     */
     //console.log(NumList);
     increment = NumList[1] - NumList[0]
@@ -266,25 +266,25 @@ function NumList2Rule(NumList){
     for(var indexNumList=0; indexNumList<NumList.length; indexNumList ++){
         if(indexNumList < NumList.length - 1){
             if(NumList[indexNumList+1] == NumList[indexNumList] + increment){
-                element_rule = 'continuous';                
+                element_rule = 'continuous';
                 continue;
             }else{
                 element_rule = 'random';
-                //console.log('check: the Number List is NOT continuous. please check it!');                
+                //console.log('check: the Number List is NOT continuous. please check it!');
                 break;
             }
         }else continue; //last data
     }
-    //console.log('check: the Number List is continuous.');    
+    //console.log('check: the Number List is continuous.');
     //return [initialValue, increment]
     if(element_rule=='continuous'){
         element_data = [initialValue, increment];
     }else if (element_rule == 'random'){
         element_data = NumList;
     }
-    
+
     var element_inst = new element(0, 'num', element_data, element_rule);
-    return element_inst;    
+    return element_inst;
 }
 
 function load_example1(){
